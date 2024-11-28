@@ -36,7 +36,7 @@ app.post('/generate', async (req, res) => {
     const base64Image = Buffer.from(response.data, 'binary').toString('base64');
 
     // Respond with the base64 string of the image
-    res.json({ image: base64Image });
+    res.json({ image: `data:image/png;base64,${base64Image}` });
   } catch (error) {
     console.error('Error generating image:', error.message);
     res.status(500).json({ error: 'Error generating image' });
